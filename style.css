@@ -5,6 +5,8 @@
     --ball-bg: #eee;
     --ball-text: #333;
     --shadow: rgba(0, 0, 0, 0.1);
+    --input-bg: #fff;
+    --input-border: #ccc;
 }
 
 [data-theme="dark"] {
@@ -14,27 +16,34 @@
     --ball-bg: #333;
     --ball-text: #fff;
     --shadow: rgba(255, 255, 255, 0.05);
+    --input-bg: #2d2d2d;
+    --input-border: #444;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: sans-serif;
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
+    padding: 20px;
 }
 
-.lotto-machine {
+.lotto-machine, .contact-form-container {
     background-color: var(--container-bg);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px var(--shadow);
     text-align: center;
     transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -69,7 +78,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-#generate-btn {
+#generate-btn, #submit-btn {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -78,8 +87,42 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
-#generate-btn:hover {
+#generate-btn:hover, #submit-btn:hover {
     background-color: #45a049;
+}
+
+/* Contact Form Styles */
+.contact-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
 }
