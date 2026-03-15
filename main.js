@@ -1,7 +1,29 @@
-
 const numberDisplay = document.querySelector('.number-display');
 const generateBtn = document.querySelector('#generate-btn');
+const themeToggle = document.querySelector('#theme-toggle');
+const body = document.body;
 
+// Theme Toggle Logic
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+        body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    }
+});
+
+// Lotto Generation Logic
 generateBtn.addEventListener('click', () => {
     numberDisplay.innerHTML = '';
     const numbers = [];

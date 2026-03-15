@@ -1,25 +1,60 @@
+:root {
+    --bg-color: #f0f0f0;
+    --container-bg: white;
+    --text-color: #333;
+    --ball-bg: #eee;
+    --ball-text: #333;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --ball-bg: #333;
+    --ball-text: #fff;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
 
 body {
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
 }
 
 .lotto-machine {
-    background-color: white;
+    background-color: var(--container-bg);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow);
     text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
 }
 
 .number-display {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .number-display span {
@@ -28,9 +63,10 @@ body {
     height: 50px;
     line-height: 50px;
     border-radius: 50%;
-    background-color: #eee;
-    margin: 0 5px;
+    background-color: var(--ball-bg);
+    color: var(--ball-text);
     font-size: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #generate-btn {
@@ -40,4 +76,10 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#generate-btn:hover {
+    background-color: #45a049;
 }
